@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <!-- スマホでの誤ズームやスクロールバグを完全に防止する設定 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>streech - ストリーチ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 🎬 起動時のロードアニメーション -->
+    <div id="loading-screen">
+        <div class="tower-container">
+            <div class="loading-block block-green"></div>
+            <div class="loading-block block-blue"></div>
+            <div class="loading-block block-orange"></div>
+            <div class="loading-block block-red"></div>
+        </div>
+        <p class="loading-text">streech を起動中...</p>
+    </div>
+
+    <!-- 📱 メインアプリ構造 -->
+    <div class="streech-app">
+        <!-- 🟩 緑色のヘッダーバー -->
+        <header class="top-bar">
+            <div class="file-actions">
+                <button id="save-btn" class="menu-btn">ファイルに保存</button>
+                <label for="file-load" class="menu-btn">ファイルから読み込む</label>
+                <input type="file" id="file-load" accept=".streech" style="display: none;">
+            </div>
+            
+            <div class="system-status">
+                <button id="turbo-btn" class="turbo-btn">⚡ ターボモード</button>
+                <div class="fps-control">
+                    <span id="fps-display">60FPS</span>
+                    <input type="range" id="fps-slider" min="20" max="80" value="60">
+                </div>
+            </div>
+        </header>
+
+        <!-- 🏢 メインコンテンツエリア -->
+        <main class="main-content">
+            
+            <!-- 📁 左側：ブロック一覧パネル -->
+            <section class="left-panel">
+                <div class="username-area">
+                    <span>ユーザー名:</span>
+                    <input type="text" id="username-input" value="streech" placeholder="名前を入力">
+                </div>
+                
+                <div class="block-palette-container">
+                    <button id="close-palette-btn" class="close-tab-btn">✖</button>
+                    <div id="block-palette" class="block-palette">
+                        <p class="section-hint">ここにブロック一覧</p>
+                        <!-- サンプルブロック -->
+                        <div class="streech-block" data-type="move">10歩動かす</div>
+                        <div class="streech-block" data-type="turn">90度回す</div>
+                    </div>
+                </div>
+                
+                <button class="extension-btn">拡張機能を追加する</button>
+            </section>
+
+            <!-- 🖥️ 右側：ステージとワークスペース -->
+            <section class="right-panel">
+                <div class="stage-controls">
+                    <button class="flag-btn">🟩</button>
+                    <button class="stop-btn">🛑</button>
+                </div>
+                
+                <!-- 枠の上が丸いステージ -->
+                <div class="stage-canvas">
+                    <div class="stage-text">ここで動作を確認</div>
+                </div>
+                
+                <!-- ブロック組み立てエリア -->
+                <div class="workspace-container">
+                    <div id="workspace" class="workspace"></div>
+                    <p class="workspace-hint">（ここに組み立てたブロックが表示されます）</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
